@@ -49,3 +49,22 @@ startBtn.addEventListener('click', function () {
     monthValue.value = new Date(Date.parse(time)).getMonth();
     dayValue.value = new Date(Date.parse(time)).getDate();
 });
+
+btnExpensesItem.addEventListener('click', function () {
+    let sum = 0;
+
+    for (let i = 0; i < inputExpensesItem.length; i++) {
+        let a = inputExpensesItem[i].value,
+            b = inputExpensesItem[++i].value;
+        if (typeof (a) === 'string' && typeof (a) != null && typeof (b) != null && a != '' && b != '' && a.length < 50) {
+            console.log('ok');
+            appData.expenses[a] = b;
+            sum += +b;
+        } else {
+            i--;
+        }
+
+    }
+
+    expensesValue.textContent = sum;
+})
