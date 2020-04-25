@@ -29,7 +29,7 @@ let appData = {
     budget: money,
     timeData: time,
     expenses: {},
-    optionalexpenses: {},
+    optionalExpenses: {},
     income: [],
     savings: false,
 };
@@ -67,4 +67,12 @@ btnExpensesItem.addEventListener('click', function () {
     }
 
     expensesValue.textContent = sum;
-})
+});
+
+btnOptionalExpItem.addEventListener('click', function () {
+    for (let i = 0; i < inputOptionalExpItem.length; i++) {
+        let opt = inputOptionalExpItem[i].value;
+        appData.optionalExpenses[i] = opt;
+        optExpensedValue.textContent += appData.optionalExpenses[i] + ' ';
+    }
+});
