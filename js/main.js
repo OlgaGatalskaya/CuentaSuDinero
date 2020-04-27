@@ -46,7 +46,7 @@ startBtn.addEventListener('click', function () {
     appData.timeData = time;
     budgetValue.textContent = money.toFixed();
     yearValue.value = new Date(Date.parse(time)).getFullYear();
-    monthValue.value = new Date(Date.parse(time)).getMonth();
+    monthValue.value = new Date(Date.parse(time)).getMonth() + 1;
     dayValue.value = new Date(Date.parse(time)).getDate();
 });
 
@@ -76,3 +76,22 @@ btnOptionalExpItem.addEventListener('click', function () {
         optExpensedValue.textContent += appData.optionalExpenses[i] + ' ';
     }
 });
+
+btnCountBudget.addEventListener('click', function(){
+    if(appData.budget != undefined) {
+        appData.moneyPerDay = ((appData.budget - +expensesValue.textContent)/30).toFixed();
+        dayBudgetValue.textContent = appData.moneyPerDay;
+
+        if (appData.moneyPerDay < 30) {
+            levelValue.textContent = 'Ingresos bajos';
+        } else if (appData.moneyPerDay > 30 && appData.moneyPerDay < 2000) {
+            levelValue.textContent = 'Ingresos medios';
+        } else if (appData.moneyPerDay > 100) {
+            levelValue.textContent = 'Ingresos altos';
+        } else {
+            levelValue.textContent = 'Ha ocurrido un error';
+        }
+    } else {
+        dayBudgetValue.textContent = 'Ha ocurrido un error';
+    }
+})
