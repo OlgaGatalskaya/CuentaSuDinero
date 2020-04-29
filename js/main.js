@@ -25,6 +25,12 @@ let startBtn = document.getElementById('start'),
 
 let money, time;
 
+btnExpensesItem.disabled = true;
+btnOptionalExpItem.disabled = true;
+btnCountBudget.disabled = true;
+checkboxSavings.disabled = true;
+
+
 let appData = {
     budget: money,
     timeData: time,
@@ -48,6 +54,12 @@ startBtn.addEventListener('click', function () {
     yearValue.value = new Date(Date.parse(time)).getFullYear();
     monthValue.value = new Date(Date.parse(time)).getMonth() + 1;
     dayValue.value = new Date(Date.parse(time)).getDate();
+
+
+    btnExpensesItem.disabled = false;
+    btnOptionalExpItem.disabled = false;
+    btnCountBudget.disabled = false;
+    checkboxSavings.disabled = false;
 });
 
 btnExpensesItem.addEventListener('click', function () {
