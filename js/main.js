@@ -94,4 +94,44 @@ btnCountBudget.addEventListener('click', function(){
     } else {
         dayBudgetValue.textContent = 'Ha ocurrido un error';
     }
-})
+});
+
+inputChooseIncome.addEventListener('input', function () {
+    let items = inputChooseIncome.value;
+    appData.income = items.split(', ');
+    incomeValue.textContent = appData.income;
+});
+
+checkboxSavings.addEventListener('click', function () {
+    if (appData.savings == true) {
+        appData.savings = false
+    } else {
+        appData.savings = true;
+    }
+});
+
+inputSum.addEventListener('input', function () {
+    if (appData.savings == true) {
+        let sum = +inputSum.value,
+            percent = +inputPercent.value;
+
+        appData.monthIncome = (sum / 100 / 12 * percent).toFixed(1);
+        appData.yearIncome = (sum / 100 * percent).toFixed(1);
+
+        monthSavingsValue.textContent = appData.monthIncome;
+        yearSavingsValue.textContent = appData.yearIncome;
+    }
+});
+
+inputPercent.addEventListener('input', function () {
+    if (appData.savings == true) {
+        let sum = +inputSum.value,
+            percent = +inputPercent.value;
+
+        appData.monthIncome = (sum / 100 / 12 * percent).toFixed(1);
+        appData.yearIncome = (sum / 100 * percent).toFixed(1);
+
+        monthSavingsValue.textContent = appData.monthIncome;
+        yearSavingsValue.textContent = appData.yearIncome;
+    }
+});
